@@ -89,6 +89,14 @@ export const getDesignTokens = (mode: 'light' | 'dark'): ThemeOptions => ({
         root: { textTransform: 'none', fontWeight: 600, fontSize: '15px' },
       },
     },
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          color: mode === 'dark' ? '#F0F0FF' : '#2D2D3A',
+          backgroundColor: mode === 'dark' ? '#0F0F1A' : '#FFFFFF',
+        },
+      },
+    },
     MuiDrawer: {
       styleOverrides: {
         paper: {
