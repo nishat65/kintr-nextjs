@@ -38,6 +38,8 @@ export const updateSession = async (request: NextRequest) => {
     '/settings',
     '/profile',
     '/workspaces',
+    '/chat',
+    '/connections',
   ];
 
   const isProtected = protectedRoutes.some((route) =>

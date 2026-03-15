@@ -212,13 +212,41 @@ export const fetchAttachments = async (goalId: string): Promise<Attachment[]> =>
   return (data ?? []) as unknown as Attachment[];
 };
 
+const ALLOWED_MIME_TYPES = [
+  'image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml',
+  'application/pdf',
+  'text/plain', 'text/csv',
+  'application/msword',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  'application/vnd.ms-excel',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+];
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+
+const sanitizeFileName = (name: string): string => {
+  // Extract just the base name (strip path traversal)
+  const base = name.split(/[/\\]/).pop() ?? 'file';
+  // Remove dangerous characters, keep only alphanumeric, dots, hyphens, underscores
+  return base.replace(/[^a-zA-Z0-9._-]/g, '_').slice(0, 200);
+};
+
 export const uploadAttachment = async (
   goalId: string,
   userId: string,
   file: File
 ): Promise<Attachment> => {
+  // Validate file size
+  if (file.size > MAX_FILE_SIZE) {
+    throw new Error(`File too large. Maximum size is ${MAX_FILE_SIZE / 1024 / 1024} MB.`);
+  }
+  // Validate MIME type
+  if (!ALLOWED_MIME_TYPES.includes(file.type)) {
+    throw new Error(`File type "${file.type}" is not allowed.`);
+  }
+
   const supabase = createClient();
-  const path = `${userId}/${goalId}/${Date.now()}_${file.name}`;
+  const safeName = sanitizeFileName(file.name);
+  const path = `${userId}/${goalId}/${Date.now()}_${safeName}`;
   const { error: uploadError } = await supabase.storage.from('attachments').upload(path, file);
   if (uploadError) throw uploadError;
   const { data: { publicUrl } } = supabase.storage.from('attachments').getPublicUrl(path);
