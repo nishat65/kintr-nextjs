@@ -15,18 +15,18 @@ A goal-tracking and collaboration platform built with Next.js and Supabase. Set 
 
 ## Tech Stack
 
-| Layer | Choice |
-|---|---|
-| Framework | Next.js 15 (App Router, TypeScript) |
-| UI | MUI v7 + Emotion |
-| Icons | Lucide React + MUI Icons |
-| Animation | Motion (Framer Motion v12) |
-| Forms | React Hook Form + Zod |
-| Data fetching | TanStack Query v5 |
-| State | Zustand |
-| Dates | Day.js |
-| Backend | Supabase (Postgres, Auth, Realtime, Storage) |
-| Drag and drop | @dnd-kit/core |
+| Layer         | Choice                                       |
+| ------------- | -------------------------------------------- |
+| Framework     | Next.js 15 (App Router, TypeScript)          |
+| UI            | MUI v7 + Emotion                             |
+| Icons         | Lucide React + MUI Icons                     |
+| Animation     | Motion (Framer Motion v12)                   |
+| Forms         | React Hook Form + Zod                        |
+| Data fetching | TanStack Query v5                            |
+| State         | Zustand                                      |
+| Dates         | Day.js                                       |
+| Backend       | Supabase (Postgres, Auth, Realtime, Storage) |
+| Drag and drop | @dnd-kit/core                                |
 
 ## Getting Started
 
@@ -77,14 +77,16 @@ A goal-tracking and collaboration platform built with Next.js and Supabase. Set 
 
    Open [http://localhost:3000](http://localhost:3000).
 
+**PROD URL** - https://kintr-goal-tracker.netlify.app/
+
 ## Environment Variables
 
-| Variable | Required | Description |
-|---|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | Yes | Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Yes | Supabase anonymous (public) key |
-| `DB_NAME` | Migrations only | Database name for direct connection |
-| `DB_PASSWORD` | Migrations only | Database password for direct connection |
+| Variable                        | Required        | Description                             |
+| ------------------------------- | --------------- | --------------------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`      | Yes             | Supabase project URL                    |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Yes             | Supabase anonymous (public) key         |
+| `DB_NAME`                       | Migrations only | Database name for direct connection     |
+| `DB_PASSWORD`                   | Migrations only | Database password for direct connection |
 
 Never commit `.env.local` or any file containing real credentials. The `.env.example` file is the only env file tracked in git.
 
