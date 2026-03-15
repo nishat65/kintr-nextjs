@@ -13,28 +13,19 @@ const AuthInitializer = () => {
   const { setUser, refreshUser } = useAuthStore();
 
   useEffect(() => {
+    // Initial load — fetch user from session cookie
     refreshUser();
 
     const supabase = createClient();
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
-      if (session?.user) {
-        const authUser = session.user;
-        const { data: profile } = await supabase
-          .from('profiles')
-          .select('*')
-          .eq('id', authUser.id)
-          .single();
-        // Fall back to auth metadata if profile row not yet created
-        setUser(profile ?? {
-          id: authUser.id,
-          username: authUser.user_metadata?.username ?? authUser.email?.split('@')[0] ?? authUser.id,
-          display_name: authUser.user_metadata?.display_name ?? authUser.user_metadata?.full_name ?? 'User',
-          avatar_url: authUser.user_metadata?.avatar_url ?? null,
-          bio: null,
-          created_at: authUser.created_at,
-          updated_at: authUser.created_at,
-        });
-      } else {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      // Skip events that don't change auth state
+      if (event === 'TOKEN_REFRESHED' || event === 'INITIAL_SESSION') return;
+
+      // For SIGNED_IN / SIGNED_OUT, refresh user outside the callback
+      // to avoid Supabase auth lock deadlock when querying inside onAuthStateChange
+      if (event === 'SIGNED_IN') {
+        refreshUser();
+      } else if (event === 'SIGNED_OUT') {
         setUser(null);
       }
     });

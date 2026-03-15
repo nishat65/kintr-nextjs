@@ -52,10 +52,15 @@ export const Footer = () => {
               Set meaningful goals, track your progress, and celebrate wins with people who care.
             </Typography>
             <Box sx={{ display: 'flex', gap: 1, mt: 3 }}>
-              {[Twitter, Github, Instagram].map((Icon, i) => (
+              {([
+                { Icon: Twitter, label: 'Twitter' },
+                { Icon: Github, label: 'GitHub' },
+                { Icon: Instagram, label: 'Instagram' },
+              ]).map(({ Icon, label }) => (
                 <IconButton
-                  key={i}
+                  key={label}
                   size="small"
+                  aria-label={label}
                   sx={{
                     color: 'rgba(255,255,255,0.4)',
                     '&:hover': { color: '#fff', backgroundColor: 'rgba(255,255,255,0.1)' },
@@ -73,7 +78,7 @@ export const Footer = () => {
               <Typography
                 variant="caption"
                 sx={{
-                  color: 'rgba(255,255,255,0.35)',
+                  color: 'rgba(255,255,255,0.6)',
                   fontWeight: 700,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
@@ -107,10 +112,10 @@ export const Footer = () => {
         <Divider sx={{ borderColor: 'rgba(255,255,255,0.08)', mt: 6, mb: 4 }} />
 
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
-          <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.3)' }}>
+          <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.55)' }}>
             © 2026 Kintr. All rights reserved.
           </Typography>
-          <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.3)' }}>
+          <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.55)' }}>
             Built for goal setters everywhere 🎯
           </Typography>
         </Box>

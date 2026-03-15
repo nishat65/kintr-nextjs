@@ -26,6 +26,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuthStore } from '@/stores/authStore';
 import { useUnreadCount, useNotificationsRealtime } from '@/hooks/useNotifications';
+import { signOutAction } from '@/app/auth/actions';
 import { colors } from '@/styles/theme';
 
 const navLinks = [
@@ -47,8 +48,8 @@ export const Navbar = ({ sidebarMode = false }: NavbarProps) => {
   const { user, isAuthenticated, isLoading, logout } = useAuthStore();
 
   const handleLogout = async () => {
-    await logout();
-    router.push('/');
+    logout();
+    await signOutAction();
   };
   const unreadCount = useUnreadCount(user?.id);
   useNotificationsRealtime(user?.id);
@@ -139,7 +140,7 @@ export const Navbar = ({ sidebarMode = false }: NavbarProps) => {
         {!isMobile && (
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
             {/* Theme Toggle */}
-            <IconButton onClick={toggleTheme} sx={{ color: 'rgba(255,255,255,0.8)', '&:hover': { color: '#fff' } }}>
+            <IconButton onClick={toggleTheme} aria-label="Toggle theme" sx={{ color: 'rgba(255,255,255,0.8)', '&:hover': { color: '#fff' } }}>
               {nextTheme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </IconButton>
 
@@ -147,7 +148,7 @@ export const Navbar = ({ sidebarMode = false }: NavbarProps) => {
             {!isLoading && (isAuthenticated && user ? (
               <>
                 <Link href="/notifications" style={{ textDecoration: 'none' }}>
-                  <IconButton sx={{ color: 'rgba(255,255,255,0.8)', '&:hover': { color: '#fff' } }}>
+                  <IconButton aria-label="Notifications" sx={{ color: 'rgba(255,255,255,0.8)', '&:hover': { color: '#fff' } }}>
                     <Badge badgeContent={unreadCount} color="error" max={9}>
                       <Bell size={20} />
                     </Badge>
@@ -211,6 +212,7 @@ export const Navbar = ({ sidebarMode = false }: NavbarProps) => {
         {isMobile && (
           <IconButton
             onClick={() => setDrawerOpen(true)}
+            aria-label="Open navigation menu"
             sx={{ color: 'rgba(255,255,255,0.85)' }}
           >
             <MenuIcon size={24} />

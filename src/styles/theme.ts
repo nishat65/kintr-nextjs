@@ -9,15 +9,15 @@ export const getDesignTokens = (mode: 'light' | 'dark'): ThemeOptions => ({
   palette: {
     mode,
     primary: {
-      main: '#F5603A',
-      light: '#FF8060',
-      dark: '#C94020',
+      main: '#CC4420',
+      light: '#F5603A',
+      dark: '#A83515',
       contrastText: '#FFFFFF',
     },
     secondary: {
-      main: '#3B72EE',
-      light: '#6B9AF5',
-      dark: '#1A50CC',
+      main: '#2B5EC4',
+      light: '#3B72EE',
+      dark: '#1A4599',
       contrastText: '#FFFFFF',
     },
     success: { main: '#4CAF50', light: '#81C784', dark: '#388E3C' },

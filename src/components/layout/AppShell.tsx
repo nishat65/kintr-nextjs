@@ -1,6 +1,7 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { useAuthStore } from '@/stores/authStore';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
@@ -16,14 +17,24 @@ const SIDEBAR_WIDTH = 240;
 
 export const AppShell = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
+  const router = useRouter();
   const { isAuthenticated, isLoading } = useAuthStore();
 
   const isPublic = PUBLIC_ROUTES.includes(pathname);
   const isSemiPublic = SEMI_PUBLIC_ROUTES.some((r) => pathname.startsWith(r));
+  const isProtected = !isPublic && !isSemiPublic;
+
+  // Client-side redirect guard: if auth resolved and user is not authenticated
+  // on a protected route, redirect to login
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated && isProtected) {
+      router.replace('/login');
+    }
+  }, [isLoading, isAuthenticated, isProtected, router]);
 
   // While session is resolving on a strictly private route, show a spinner.
   // Semi-public and public routes render immediately without waiting.
-  if (isLoading && !isPublic && !isSemiPublic) {
+  if (isLoading && isProtected) {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
         <CircularProgress />

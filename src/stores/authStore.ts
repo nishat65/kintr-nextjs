@@ -25,28 +25,32 @@ export const useAuthStore = create<AuthState>((set) => ({
   },
 
   refreshUser: async () => {
-    const supabase = createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
+    try {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        set({ user: null, isAuthenticated: false, isLoading: false });
+        return;
+      }
+      // User has a valid session — they ARE authenticated regardless of profile state
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single();
+      // Fall back to auth metadata if profile row doesn't exist yet
+      const resolvedProfile: Profile | null = profile ?? (user.user_metadata ? {
+        id: user.id,
+        username: user.user_metadata.username ?? user.email?.split('@')[0] ?? user.id,
+        display_name: user.user_metadata.display_name ?? user.user_metadata.full_name ?? 'User',
+        avatar_url: user.user_metadata.avatar_url ?? null,
+        bio: null,
+        created_at: user.created_at,
+        updated_at: user.created_at,
+      } : null);
+      set({ user: resolvedProfile, isAuthenticated: true, isLoading: false });
+    } catch {
       set({ user: null, isAuthenticated: false, isLoading: false });
-      return;
     }
-    // User has a valid session — they ARE authenticated regardless of profile state
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', user.id)
-      .single();
-    // Fall back to auth metadata if profile row doesn't exist yet
-    const resolvedProfile: Profile | null = profile ?? (user.user_metadata ? {
-      id: user.id,
-      username: user.user_metadata.username ?? user.email?.split('@')[0] ?? user.id,
-      display_name: user.user_metadata.display_name ?? user.user_metadata.full_name ?? 'User',
-      avatar_url: user.user_metadata.avatar_url ?? null,
-      bio: null,
-      created_at: user.created_at,
-      updated_at: user.created_at,
-    } : null);
-    set({ user: resolvedProfile, isAuthenticated: true, isLoading: false });
   },
 }));

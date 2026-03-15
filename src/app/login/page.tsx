@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useState, useEffect } from "react";
 import {
   Box,
   Container,
@@ -28,6 +28,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Target, Eye, EyeOff } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
+import { useAuthStore } from "@/stores/authStore";
 import { colors } from "@/styles/theme";
 
 const loginSchema = z.object({
@@ -106,6 +107,14 @@ function LoginContent() {
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
   const supabase = createClient();
+  const { isAuthenticated, isLoading } = useAuthStore();
+
+  // Redirect to dashboard if already authenticated
+  useEffect(() => {
+    if (!isLoading && isAuthenticated) {
+      router.replace('/dashboard');
+    }
+  }, [isLoading, isAuthenticated, router]);
 
   const loginForm = useForm<LoginValues>({
     resolver: zodResolver(loginSchema),
@@ -124,8 +133,9 @@ function LoginContent() {
       setError(authError.message);
       return;
     }
-    // router.refresh() lets the middleware detect the new session and redirect to /dashboard
+    // Refresh server state so middleware sees the new session, then navigate
     router.refresh();
+    router.push('/dashboard');
   };
 
   const handleRegister = async (data: RegisterValues) => {
@@ -145,6 +155,7 @@ function LoginContent() {
       return;
     }
     router.refresh();
+    router.push('/dashboard');
   };
 
   const handleGoogleAuth = async () => {

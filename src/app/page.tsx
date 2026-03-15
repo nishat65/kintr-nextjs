@@ -135,7 +135,7 @@ export default function HomePage() {
                   sx={{
                     mb: 3,
                     bgcolor: "#FFF0EC",
-                    color: "#F5603A",
+                    color: "#B03818",
                     fontWeight: 700,
                     fontSize: "13px",
                   }}
@@ -181,10 +181,10 @@ export default function HomePage() {
                       variant="outlined"
                       size="large"
                       sx={{
-                        borderColor: "#3B72EE",
-                        color: "#3B72EE",
+                        borderColor: "#2B5EC4",
+                        color: "#2B5EC4",
                         "&:hover": {
-                          borderColor: "#1A50CC",
+                          borderColor: "#1A4599",
                           bgcolor: "#EEF4FF",
                         },
                       }}
@@ -260,7 +260,7 @@ export default function HomePage() {
                           size="small"
                           sx={{
                             bgcolor: "rgba(245,196,50,0.2)",
-                            color: "#F5C332",
+                            color: "#E0AD10",
                             fontSize: "10px",
                             fontWeight: 700,
                           }}
@@ -270,13 +270,14 @@ export default function HomePage() {
                           size="small"
                           sx={{
                             bgcolor: "rgba(59,114,238,0.2)",
-                            color: "#6B9AF5",
+                            color: "#A0BFFF",
                             fontSize: "10px",
                           }}
                         />
                       </Box>
                       <Typography
                         variant="h6"
+                        component="p"
                         sx={{ color: "#fff", mb: 1, fontSize: "16px" }}
                       >
                         Launch my side project 🚀
@@ -345,7 +346,7 @@ export default function HomePage() {
                           size="small"
                           sx={{
                             bgcolor: "#FFF0EC",
-                            color: "#F5603A",
+                            color: "#B03818",
                             fontSize: "10px",
                             fontWeight: 700,
                           }}
@@ -355,13 +356,14 @@ export default function HomePage() {
                           size="small"
                           sx={{
                             bgcolor: "#F0FBF0",
-                            color: "#4CAF50",
+                            color: "#2E7D32",
                             fontSize: "10px",
                           }}
                         />
                       </Box>
                       <Typography
                         variant="h6"
+                        component="p"
                         sx={{ color: "#2D2D3A", fontSize: "15px", mb: 0.5 }}
                       >
                         Morning workout ✅
@@ -390,6 +392,7 @@ export default function HomePage() {
                     {["alex", "sara", "marco"].map((seed) => (
                       <Avatar
                         key={seed}
+                        alt={`${seed} avatar`}
                         src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${seed}`}
                         sx={{
                           width: 40,
@@ -490,7 +493,7 @@ export default function HomePage() {
                     >
                       {feature.icon}
                     </Box>
-                    <Typography variant="h5" sx={{ mb: 1.5, fontWeight: 700 }}>
+                    <Typography variant="h5" component="h3" sx={{ mb: 1.5, fontWeight: 700 }}>
                       {feature.title}
                     </Typography>
                     <Typography
@@ -560,7 +563,7 @@ export default function HomePage() {
                       <Box
                         sx={{ display: "flex", alignItems: "center", gap: 1.5 }}
                       >
-                        <Avatar src={t.avatar} sx={{ width: 40, height: 40 }} />
+                        <Avatar alt={t.name} src={t.avatar} sx={{ width: 40, height: 40 }} />
                         <Box>
                           <Typography
                             variant="body2"
@@ -677,7 +680,7 @@ export default function HomePage() {
                   }}
                 >
                   <CardContent>
-                    <Typography variant="h6" sx={{ color: "#fff", mb: 3 }}>
+                    <Typography variant="h6" component="p" sx={{ color: "#fff", mb: 3 }}>
                       Your goals this month
                     </Typography>
                     {[
@@ -735,7 +738,7 @@ export default function HomePage() {
                           size="small"
                           sx={{
                             bgcolor: "rgba(59,114,238,0.2)",
-                            color: "#6B9AF5",
+                            color: "#A0BFFF",
                             fontSize: "11px",
                           }}
                         />
@@ -837,6 +840,7 @@ export default function HomePage() {
                       </Box>
                       <Typography
                         variant="h6"
+                        component="h3"
                         fontWeight={700}
                         sx={{ mb: 0.5 }}
                       >
@@ -913,7 +917,7 @@ export default function HomePage() {
                 }}
               >
                 <CardContent>
-                  <Typography variant="h6" sx={{ color: "#fff", mb: 1 }}>
+                  <Typography variant="h6" component="h3" sx={{ color: "#fff", mb: 1 }}>
                     Free plan
                   </Typography>
                   <Typography
@@ -963,7 +967,7 @@ export default function HomePage() {
             </Grid>
             <Grid size={{ xs: 12, sm: 6, md: 4 }}>
               <Card
-                sx={{ bgcolor: "#F5603A", border: "2px solid #FF8060", p: 1 }}
+                sx={{ bgcolor: "#B83A18", border: "2px solid #D45030", p: 1 }}
               >
                 <CardContent>
                   <Box
@@ -974,14 +978,14 @@ export default function HomePage() {
                       mb: 1,
                     }}
                   >
-                    <Typography variant="h6" sx={{ color: "#fff" }}>
+                    <Typography variant="h6" component="h3" sx={{ color: "#fff" }}>
                       Pro plan
                     </Typography>
                     <Chip
                       label="Popular"
                       size="small"
                       sx={{
-                        bgcolor: "rgba(255,255,255,0.2)",
+                        bgcolor: "#1A1A2C",
                         color: "#fff",
                         fontWeight: 700,
                         fontSize: "11px",
@@ -1032,7 +1036,7 @@ export default function HomePage() {
                       fullWidth
                       sx={{
                         bgcolor: "#fff",
-                        color: "#F5603A",
+                        color: "#B83A18",
                         "&:hover": { bgcolor: "#f5f5f5" },
                       }}
                     >
