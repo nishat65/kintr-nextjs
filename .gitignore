@@ -60,3 +60,5 @@ next-env.d.ts
 *.crt
 secrets/
 .secrets
+# Local Netlify folder
+.netlify
