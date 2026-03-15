@@ -23,10 +23,11 @@ export const DMInboxItem = ({ partner, lastMessage, unread }: DMInboxItemProps) 
           p: 2.5,
           borderRadius: '16px',
           cursor: 'pointer',
-          bgcolor: unread ? '#FFF8F6' : '#fff',
-          border: `1px solid ${unread ? '#FFD5C8' : '#F0F0F8'}`,
+          bgcolor: unread ? 'rgba(245, 96, 58, 0.06)' : 'background.paper',
+          border: '1px solid',
+          borderColor: unread ? 'rgba(245, 96, 58, 0.25)' : 'divider',
           transition: 'all 0.15s',
-          '&:hover': { bgcolor: '#F7F7FB', borderColor: '#E8E8F0' },
+          '&:hover': { bgcolor: 'action.hover', borderColor: 'divider' },
         }}
       >
         <Badge
@@ -38,10 +39,10 @@ export const DMInboxItem = ({ partner, lastMessage, unread }: DMInboxItemProps) 
         </Badge>
         <Box sx={{ flex: 1, minWidth: 0 }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
-            <Typography variant="body2" fontWeight={unread ? 700 : 600} sx={{ color: '#2D2D3A' }}>
+            <Typography variant="body2" fontWeight={unread ? 700 : 600} sx={{ color: 'text.primary' }}>
               {partner.display_name}
             </Typography>
-            <Typography variant="caption" sx={{ color: '#9B9BAB', flexShrink: 0 }}>
+            <Typography variant="caption" sx={{ color: 'text.disabled', flexShrink: 0 }}>
               {dayjs(lastMessage.created_at).fromNow()}
             </Typography>
           </Box>

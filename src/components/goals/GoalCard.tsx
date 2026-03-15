@@ -28,16 +28,16 @@ import { useAuthStore } from '@/stores/authStore';
 dayjs.extend(relativeTime);
 
 const scopeConfig = {
-  day: { label: 'DAY', color: '#F5603A', bg: '#FFF0EC' },
-  month: { label: 'MONTH', color: '#3B72EE', bg: '#EEF4FF' },
-  year: { label: 'YEAR', color: '#F5C332', bg: '#FFFBEC' },
+  day: { label: 'DAY', color: '#F5603A', bg: 'rgba(245, 96, 58, 0.12)' },
+  month: { label: 'MONTH', color: '#3B72EE', bg: 'rgba(59, 114, 238, 0.12)' },
+  year: { label: 'YEAR', color: '#F5C332', bg: 'rgba(245, 195, 50, 0.12)' },
 };
 
 const statusConfig = {
-  not_started: { label: 'Not started', color: '#6B6B80', bg: '#F7F7FB' },
-  in_progress: { label: 'In progress', color: '#3B72EE', bg: '#EEF4FF' },
-  completed: { label: 'Completed', color: '#4CAF50', bg: '#F0FBF0' },
-  failed: { label: 'Failed', color: '#EF5350', bg: '#FFF0F0' },
+  not_started: { label: 'Not started', color: '#6B6B80', bg: 'rgba(107, 107, 128, 0.12)' },
+  in_progress: { label: 'In progress', color: '#3B72EE', bg: 'rgba(59, 114, 238, 0.12)' },
+  completed: { label: 'Completed', color: '#4CAF50', bg: 'rgba(76, 175, 80, 0.12)' },
+  failed: { label: 'Failed', color: '#EF5350', bg: 'rgba(239, 83, 80, 0.12)' },
 };
 
 interface GoalCardProps {
@@ -110,7 +110,7 @@ export const GoalCard = ({ goal, showAuthor = false, onEdit, onDelete }: GoalCar
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                 <Tooltip title={goal.visibility === 'private' ? 'Private' : 'Public'}>
-                  <Box sx={{ color: '#6B6B80' }}>
+                  <Box sx={{ color: 'text.secondary' }}>
                     {goal.visibility === 'private' ? <Lock size={14} /> : <Globe size={14} />}
                   </Box>
                 </Tooltip>
@@ -118,7 +118,7 @@ export const GoalCard = ({ goal, showAuthor = false, onEdit, onDelete }: GoalCar
                   <IconButton
                     size="small"
                     onClick={handleMenuOpen}
-                    sx={{ ml: 0.5, color: '#6B6B80', '&:hover': { color: 'text.primary' } }}
+                    sx={{ ml: 0.5, color: 'text.secondary', '&:hover': { color: 'text.primary' } }}
                   >
                     <MoreVertical size={16} />
                   </IconButton>
@@ -130,7 +130,7 @@ export const GoalCard = ({ goal, showAuthor = false, onEdit, onDelete }: GoalCar
             <Typography
               variant="h6"
               sx={{
-                color: '#2D2D3A',
+                color: 'text.primary',
                 mb: 1,
                 fontWeight: 700,
                 fontSize: '16px',
@@ -148,7 +148,7 @@ export const GoalCard = ({ goal, showAuthor = false, onEdit, onDelete }: GoalCar
               <Typography
                 variant="body2"
                 sx={{
-                  color: '#6B6B80',
+                  color: 'text.secondary',
                   mb: 2,
                   display: '-webkit-box',
                   WebkitLineClamp: 2,
@@ -162,7 +162,7 @@ export const GoalCard = ({ goal, showAuthor = false, onEdit, onDelete }: GoalCar
             )}
 
             {/* Target date */}
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, mb: 2.5, color: '#6B6B80' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, mb: 2.5, color: 'text.secondary' }}>
               <Calendar size={13} />
               <Typography variant="caption" fontWeight={500}>
                 {goal.scope === 'day'
@@ -179,7 +179,7 @@ export const GoalCard = ({ goal, showAuthor = false, onEdit, onDelete }: GoalCar
               {showAuthor && (
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <Avatar src={goal.author.avatar_url ?? undefined} sx={{ width: 24, height: 24 }} />
-                  <Typography variant="caption" sx={{ color: '#6B6B80', fontWeight: 500 }}>
+                  <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 500 }}>
                     {goal.author.display_name}
                   </Typography>
                 </Box>
@@ -188,24 +188,24 @@ export const GoalCard = ({ goal, showAuthor = false, onEdit, onDelete }: GoalCar
               {/* Actions */}
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, ml: showAuthor ? 'auto' : 0 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-                  <IconButton size="small" sx={{ color: '#6B6B80', '&:hover': { color: '#4CAF50' } }} onClick={handleVote}>
+                  <IconButton size="small" sx={{ color: 'text.secondary', '&:hover': { color: '#4CAF50' } }} onClick={handleVote}>
                     <ThumbsUp size={14} />
                   </IconButton>
-                  <Typography variant="caption" sx={{ color: '#6B6B80', fontWeight: 600 }}>
+                  <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600 }}>
                     {goal.upvotes}
                   </Typography>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-                  <IconButton size="small" sx={{ color: '#6B6B80', '&:hover': { color: '#EF5350' } }} onClick={handleVote}>
+                  <IconButton size="small" sx={{ color: 'text.secondary', '&:hover': { color: '#EF5350' } }} onClick={handleVote}>
                     <ThumbsDown size={14} />
                   </IconButton>
-                  <Typography variant="caption" sx={{ color: '#6B6B80', fontWeight: 600 }}>
+                  <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600 }}>
                     {goal.downvotes}
                   </Typography>
                 </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25, ml: 0.5 }}>
-                  <MessageCircle size={14} color="#6B6B80" />
-                  <Typography variant="caption" sx={{ color: '#6B6B80', fontWeight: 600 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25, ml: 0.5, color: 'text.secondary' }}>
+                  <MessageCircle size={14} />
+                  <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600 }}>
                     {goal.comment_count}
                   </Typography>
                 </Box>

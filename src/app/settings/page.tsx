@@ -54,7 +54,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "#F7F7FB" }}>
+    <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "background.default" }}>
       <Box sx={{ backgroundColor: colors.darkBg, py: 6 }}>
         <Container maxWidth="md">
           <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
@@ -109,7 +109,8 @@ export default function SettingsPage() {
                       alignItems: "center",
                       justifyContent: "center",
                       cursor: "pointer",
-                      border: "2px solid #fff",
+                      border: "2px solid",
+                      borderColor: "background.paper",
                     }}
                   >
                     <Camera size={14} color="#fff" />
@@ -119,10 +120,10 @@ export default function SettingsPage() {
                   <Typography variant="body1" fontWeight={700}>
                     {user?.display_name}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: "#6B6B80" }}>
+                  <Typography variant="body2" sx={{ color: "text.secondary" }}>
                     @{user?.username}
                   </Typography>
-                  <Typography variant="caption" sx={{ color: "#9B9BAB" }}>
+                  <Typography variant="caption" sx={{ color: "text.disabled" }}>
                     Click the camera to change your photo
                   </Typography>
                 </Box>
@@ -172,7 +173,7 @@ export default function SettingsPage() {
             </CardContent>
           </Card>
 
-          <Card sx={{ borderRadius: "20px", border: "1px solid #FFD5D5" }}>
+          <Card sx={{ borderRadius: "20px", border: "1px solid", borderColor: "error.light" }}>
             <CardContent sx={{ p: { xs: 3, md: 5 } }}>
               <Typography
                 variant="h6"
@@ -181,7 +182,7 @@ export default function SettingsPage() {
               >
                 Danger Zone
               </Typography>
-              <Typography variant="body2" sx={{ color: "#6B6B80", mb: 3 }}>
+              <Typography variant="body2" sx={{ color: "text.secondary", mb: 3 }}>
                 Once you delete your account, all your goals, connections, and
                 messages will be permanently removed.
               </Typography>
@@ -190,7 +191,7 @@ export default function SettingsPage() {
                 sx={{
                   borderColor: "#EF5350",
                   color: "#EF5350",
-                  "&:hover": { bgcolor: "#FFF0F0" },
+                  "&:hover": { bgcolor: "rgba(239, 83, 80, 0.12)" },
                 }}
               >
                 Delete account

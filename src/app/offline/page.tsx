@@ -17,11 +17,11 @@ export default function OfflinePage() {
         px: 3,
       }}
     >
-      <WifiOff size={48} color="#6B6B80" />
+      <WifiOff size={48} />
       <Typography variant="h4" fontWeight={800} sx={{ mt: 3, mb: 1 }}>
         You&apos;re offline
       </Typography>
-      <Typography variant="body2" sx={{ color: '#6B6B80', mb: 4 }}>
+      <Typography variant="body2" sx={{ color: 'text.secondary', mb: 4 }}>
         Check your internet connection and try again.
       </Typography>
       <Button component={Link} href="/dashboard" variant="contained">

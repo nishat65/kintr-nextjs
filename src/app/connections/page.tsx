@@ -58,7 +58,7 @@ export default function ConnectionsPage() {
 
   if (!isAuthenticated) {
     return (
-      <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "#F7F7FB" }}>
+      <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "background.default" }}>
         <Box sx={{ backgroundColor: colors.darkBg, py: 6 }}>
           <Container maxWidth="lg">
             <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 2 }}>
@@ -73,12 +73,12 @@ export default function ConnectionsPage() {
           </Container>
         </Box>
         <Container maxWidth="lg" sx={{ py: 10 }}>
-          <Box sx={{ textAlign: "center", py: 8, border: "2px dashed #E8E8F0", borderRadius: "20px" }}>
-            <Lock size={40} color="#E8E8F0" />
-            <Typography variant="h6" sx={{ color: "#2D2D3A", mt: 2, fontWeight: 700 }}>
+          <Box sx={{ textAlign: "center", py: 8, border: "2px dashed", borderColor: "divider", borderRadius: "20px" }}>
+            <Lock size={40} color="currentColor" />
+            <Typography variant="h6" sx={{ color: "text.primary", mt: 2, fontWeight: 700 }}>
               Sign in to manage your connections
             </Typography>
-            <Typography variant="body2" sx={{ color: "#6B6B80", mt: 1, mb: 4 }}>
+            <Typography variant="body2" sx={{ color: "text.secondary", mt: 1, mb: 4 }}>
               Connect with people, send requests, and build your accountability network.
             </Typography>
             <Box sx={{ display: "flex", gap: 2, justifyContent: "center", flexWrap: "wrap" }}>
@@ -94,7 +94,7 @@ export default function ConnectionsPage() {
                 component={Link}
                 href="/login?mode=register"
                 variant="outlined"
-                sx={{ borderColor: "#F5603A", color: "#F5603A", "&:hover": { bgcolor: "#FFF0EC" }, borderRadius: "50px", px: 4 }}
+                sx={{ borderColor: "#F5603A", color: "#F5603A", "&:hover": { bgcolor: "rgba(245, 96, 58, 0.12)" }, borderRadius: "50px", px: 4 }}
               >
                 Create account
               </Button>
@@ -106,7 +106,7 @@ export default function ConnectionsPage() {
   }
 
   return (
-    <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "#F7F7FB" }}>
+    <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "background.default" }}>
       <Box sx={{ backgroundColor: colors.darkBg, py: 6 }}>
         <Container maxWidth="lg">
           <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 2 }}>
@@ -127,9 +127,9 @@ export default function ConnectionsPage() {
           onChange={(_, v) => setTab(v)}
           sx={{
             mb: 4,
-            "& .MuiTabs-indicator": { backgroundColor: "#F5603A" },
-            "& .MuiTab-root": { color: "#6B6B80" },
-            "& .Mui-selected": { color: "#F5603A !important" },
+            "& .MuiTabs-indicator": { backgroundColor: "primary.light" },
+            "& .MuiTab-root": { color: "text.secondary" },
+            "& .Mui-selected": { color: "primary.light !important" },
           }}
         >
           <Tab
@@ -139,7 +139,7 @@ export default function ConnectionsPage() {
                 <Chip
                   label={friends.length}
                   size="small"
-                  sx={{ bgcolor: "#F7F7FB", color: "#6B6B80", fontWeight: 700, fontSize: "11px" }}
+                  sx={{ bgcolor: "background.default", color: "text.secondary", fontWeight: 700, fontSize: "11px" }}
                 />
               </Box>
             }
@@ -152,7 +152,7 @@ export default function ConnectionsPage() {
                   <Chip
                     label={pendingIncoming.length + pendingOutgoing.length}
                     size="small"
-                    sx={{ bgcolor: "#FFF0EC", color: "#F5603A", fontWeight: 700, fontSize: "11px" }}
+                    sx={{ bgcolor: "rgba(245, 96, 58, 0.12)", color: "#F5603A", fontWeight: 700, fontSize: "11px" }}
                   />
                 )}
               </Box>
@@ -165,7 +165,7 @@ export default function ConnectionsPage() {
                 <Chip
                   label={discoverable.length}
                   size="small"
-                  sx={{ bgcolor: "#F7F7FB", color: "#6B6B80", fontWeight: 700, fontSize: "11px" }}
+                  sx={{ bgcolor: "background.default", color: "text.secondary", fontWeight: 700, fontSize: "11px" }}
                 />
               </Box>
             }
@@ -181,12 +181,12 @@ export default function ConnectionsPage() {
                   <Skeleton key={i} variant="rounded" height={80} sx={{ borderRadius: "16px" }} />
                 ))
               ) : friends.length === 0 ? (
-                <Box sx={{ textAlign: "center", py: 10, border: "2px dashed #E8E8F0", borderRadius: "20px" }}>
-                  <Users size={40} color="#E8E8F0" />
-                  <Typography variant="h6" sx={{ color: "#6B6B80", mt: 2 }}>
+                <Box sx={{ textAlign: "center", py: 10, border: "2px dashed", borderColor: "divider", borderRadius: "20px" }}>
+                  <Users size={40} color="currentColor" />
+                  <Typography variant="h6" sx={{ color: "text.secondary", mt: 2 }}>
                     No connections yet
                   </Typography>
-                  <Typography variant="body2" sx={{ color: "#9B9BAB" }}>
+                  <Typography variant="body2" sx={{ color: "text.disabled" }}>
                     Connect with people to start sharing goals
                   </Typography>
                 </Box>
@@ -216,7 +216,7 @@ export default function ConnectionsPage() {
                 <>
                   {pendingIncoming.length > 0 && (
                     <Box>
-                      <Typography variant="overline" sx={{ color: "#6B6B80", fontWeight: 700, mb: 1.5, display: "block" }}>
+                      <Typography variant="overline" sx={{ color: "text.secondary", fontWeight: 700, mb: 1.5, display: "block" }}>
                         Incoming ({pendingIncoming.length})
                       </Typography>
                       <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
@@ -235,7 +235,7 @@ export default function ConnectionsPage() {
 
                   {pendingOutgoing.length > 0 && (
                     <Box>
-                      <Typography variant="overline" sx={{ color: "#6B6B80", fontWeight: 700, mb: 1.5, display: "block" }}>
+                      <Typography variant="overline" sx={{ color: "text.secondary", fontWeight: 700, mb: 1.5, display: "block" }}>
                         Sent ({pendingOutgoing.length})
                       </Typography>
                       <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
@@ -249,7 +249,7 @@ export default function ConnectionsPage() {
                                 alignItems: "center",
                                 gap: 2,
                                 p: 2.5,
-                                bgcolor: "#fff",
+                                bgcolor: "background.paper",
                                 borderRadius: "16px",
                                 boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
                                 flexWrap: "wrap",
@@ -262,7 +262,7 @@ export default function ConnectionsPage() {
                                 <Typography variant="body1" fontWeight={700}>
                                   {other?.display_name ?? "Unknown"}
                                 </Typography>
-                                <Typography variant="caption" sx={{ color: "#6B6B80" }}>
+                                <Typography variant="caption" sx={{ color: "text.secondary" }}>
                                   @{other?.username}
                                 </Typography>
                               </Box>
@@ -290,8 +290,8 @@ export default function ConnectionsPage() {
                   )}
 
                   {pendingIncoming.length === 0 && pendingOutgoing.length === 0 && (
-                    <Box sx={{ textAlign: "center", py: 10, border: "2px dashed #E8E8F0", borderRadius: "20px" }}>
-                      <Typography variant="h6" sx={{ color: "#6B6B80" }}>
+                    <Box sx={{ textAlign: "center", py: 10, border: "2px dashed", borderColor: "divider", borderRadius: "20px" }}>
+                      <Typography variant="h6" sx={{ color: "text.secondary" }}>
                         No pending requests
                       </Typography>
                     </Box>
@@ -311,9 +311,9 @@ export default function ConnectionsPage() {
                   <Skeleton key={i} variant="rounded" height={80} sx={{ borderRadius: "16px" }} />
                 ))
               ) : discoverable.length === 0 ? (
-                <Box sx={{ textAlign: "center", py: 10, border: "2px dashed #E8E8F0", borderRadius: "20px" }}>
-                  <UserCheck size={40} color="#E8E8F0" />
-                  <Typography variant="h6" sx={{ color: "#6B6B80", mt: 2 }}>
+                <Box sx={{ textAlign: "center", py: 10, border: "2px dashed", borderColor: "divider", borderRadius: "20px" }}>
+                  <UserCheck size={40} color="currentColor" />
+                  <Typography variant="h6" sx={{ color: "text.secondary", mt: 2 }}>
                     You&apos;re connected with everyone!
                   </Typography>
                 </Box>
@@ -326,7 +326,7 @@ export default function ConnectionsPage() {
                       alignItems: "center",
                       gap: 2,
                       p: 2.5,
-                      bgcolor: "#fff",
+                      bgcolor: "background.paper",
                       borderRadius: "16px",
                       boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
                       flexWrap: "wrap",
@@ -339,11 +339,11 @@ export default function ConnectionsPage() {
                       <Typography variant="body1" fontWeight={700}>
                         {profile.display_name}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: "#6B6B80" }}>
+                      <Typography variant="caption" sx={{ color: "text.secondary" }}>
                         @{profile.username}
                       </Typography>
                       {profile.bio && (
-                        <Typography variant="body2" sx={{ color: "#9B9BAB", mt: 0.5, fontSize: "12px" }}>
+                        <Typography variant="body2" sx={{ color: "text.disabled", mt: 0.5, fontSize: "12px" }}>
                           {profile.bio}
                         </Typography>
                       )}
@@ -357,7 +357,7 @@ export default function ConnectionsPage() {
                       sx={{
                         borderColor: "#F5603A",
                         color: "#F5603A",
-                        "&:hover": { bgcolor: "#FFF0EC" },
+                        "&:hover": { bgcolor: "rgba(245, 96, 58, 0.12)" },
                         borderRadius: "50px",
                       }}
                     >

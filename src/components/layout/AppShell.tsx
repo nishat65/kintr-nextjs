@@ -32,9 +32,18 @@ export const AppShell = ({ children }: { children: React.ReactNode }) => {
     }
   }, [isLoading, isAuthenticated, isProtected, router]);
 
-  // While session is resolving on a strictly private route, show a spinner.
-  // Semi-public and public routes render immediately without waiting.
-  if (isLoading && isProtected) {
+  // While session is resolving, show a spinner to prevent content flash.
+  // Landing page (/) renders immediately; other routes wait for auth.
+  if (isLoading && pathname !== '/') {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  // If authenticated and on a public auth route (login/register), redirect immediately
+  if (!isLoading && isAuthenticated && (pathname === '/login' || pathname === '/register')) {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
         <CircularProgress />

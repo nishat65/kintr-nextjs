@@ -109,7 +109,7 @@ export const AddGoalToWorkspaceDialog = ({
             input: {
               startAdornment: (
                 <InputAdornment position="start">
-                  <Search size={16} color="#6B6B80" />
+                  <Search size={16} />
                 </InputAdornment>
               ),
             },
@@ -122,7 +122,7 @@ export const AddGoalToWorkspaceDialog = ({
           </Box>
         ) : filtered.length === 0 ? (
           <Box sx={{ textAlign: 'center', py: 6 }}>
-            <Target size={36} color="#E8E8F0" />
+            <Target size={36} />
             <Typography variant="body2" sx={{ color: 'text.secondary', mt: 2 }}>
               {search ? 'No goals match your search' : 'All your goals are already in this workspace'}
             </Typography>

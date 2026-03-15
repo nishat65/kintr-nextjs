@@ -78,16 +78,16 @@ const MentionText = ({ text }: { text: string }) => {
 };
 
 const scopeConfig = {
-  day: { label: "DAY", color: "#F5603A", bg: "#FFF0EC" },
-  month: { label: "MONTH", color: "#3B72EE", bg: "#EEF4FF" },
-  year: { label: "YEAR", color: "#F5C332", bg: "#FFFBEC" },
+  day: { label: "DAY", color: "#F5603A", bg: "rgba(245, 96, 58, 0.12)" },
+  month: { label: "MONTH", color: "#3B72EE", bg: "rgba(59, 114, 238, 0.12)" },
+  year: { label: "YEAR", color: "#F5C332", bg: "rgba(245, 195, 50, 0.12)" },
 };
 
 const statusConfig = {
-  not_started: { label: "Not started", color: "#6B6B80", bg: "#F7F7FB" },
-  in_progress: { label: "In progress", color: "#3B72EE", bg: "#EEF4FF" },
-  completed: { label: "Completed", color: "#4CAF50", bg: "#F0FBF0" },
-  failed: { label: "Failed", color: "#EF5350", bg: "#FFF0F0" },
+  not_started: { label: "Not started", color: "text.secondary", bg: "rgba(107, 107, 128, 0.12)" },
+  in_progress: { label: "In progress", color: "#3B72EE", bg: "rgba(59, 114, 238, 0.12)" },
+  completed: { label: "Completed", color: "#4CAF50", bg: "rgba(76, 175, 80, 0.12)" },
+  failed: { label: "Failed", color: "#EF5350", bg: "rgba(239, 83, 80, 0.12)" },
 };
 
 export default function GoalDetailPage({
@@ -223,7 +223,7 @@ export default function GoalDetailPage({
   };
 
   return (
-    <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "#F7F7FB" }}>
+    <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "background.default" }}>
       {/* Header */}
       <Box sx={{ backgroundColor: colors.darkBg, pb: 5, pt: 4 }}>
         <Container maxWidth="lg">
@@ -417,9 +417,9 @@ export default function GoalDetailPage({
           onChange={(_, v) => setActiveTab(v)}
           sx={{
             mb: 4,
-            "& .MuiTabs-indicator": { backgroundColor: "#F5603A" },
-            "& .MuiTab-root": { color: "#6B6B80" },
-            "& .Mui-selected": { color: "#F5603A !important" },
+            "& .MuiTabs-indicator": { backgroundColor: "primary.light" },
+            "& .MuiTab-root": { color: "text.secondary" },
+            "& .Mui-selected": { color: "primary.light !important" },
           }}
         >
           <Tab
@@ -490,7 +490,7 @@ export default function GoalDetailPage({
                           </Typography>
                           <Typography
                             variant="caption"
-                            sx={{ color: "#6B6B80" }}
+                            sx={{ color: "text.secondary" }}
                           >
                             {dayjs(comment.created_at).fromNow()}
                           </Typography>
@@ -498,7 +498,7 @@ export default function GoalDetailPage({
                       </Box>
                       <Typography
                         variant="body2"
-                        sx={{ color: "#2D2D3A", lineHeight: 1.6 }}
+                        sx={{ color: "text.primary", lineHeight: 1.6 }}
                       >
                         <MentionText text={comment.content} />
                       </Typography>
@@ -523,7 +523,7 @@ export default function GoalDetailPage({
                   }}
                 >
                   {goalMessages.length === 0 ? (
-                    <Box sx={{ textAlign: "center", py: 8, color: "#9B9BAB" }}>
+                    <Box sx={{ textAlign: "center", py: 8, color: "text.disabled" }}>
                       <MessageCircle size={40} />
                       <Typography variant="body2" sx={{ mt: 2 }}>
                         No messages yet. Start the conversation!
@@ -566,7 +566,7 @@ export default function GoalDetailPage({
                       bgcolor: "#F5603A",
                       color: "#fff",
                       "&:hover": { bgcolor: "#C94020" },
-                      "&:disabled": { bgcolor: "#F0F0F8" },
+                      "&:disabled": { bgcolor: "action.disabledBackground" },
                     }}
                   >
                     <Send size={18} />

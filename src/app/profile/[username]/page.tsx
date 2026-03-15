@@ -69,7 +69,7 @@ export default function ProfilePage({
   ];
 
   return (
-    <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "#F7F7FB" }}>
+    <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "background.default" }}>
       <Box sx={{ backgroundColor: colors.darkBg, pb: 6, pt: 6 }}>
         <Container maxWidth="lg">
           <motion.div
@@ -175,7 +175,7 @@ export default function ProfilePage({
           <Chip
             label={goals.length}
             size="small"
-            sx={{ bgcolor: "#FFF0EC", color: "#F5603A", fontWeight: 700 }}
+            sx={{ bgcolor: "rgba(245, 96, 58, 0.12)", color: "#F5603A", fontWeight: 700 }}
           />
         </Box>
         <Divider sx={{ mb: 4 }} />

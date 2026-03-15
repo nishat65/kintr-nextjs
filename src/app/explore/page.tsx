@@ -39,7 +39,7 @@ export default function ExplorePage() {
   const sortedByVotes = [...filtered].sort((a, b) => b.upvotes - a.upvotes);
 
   return (
-    <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "#F7F7FB" }}>
+    <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "background.default" }}>
       {/* Header */}
       <Box sx={{ backgroundColor: colors.darkBg, py: 6 }}>
         <Container maxWidth="lg">
@@ -110,9 +110,9 @@ export default function ExplorePage() {
             value={scopeFilter}
             onChange={(_, v) => setScopeFilter(v)}
             sx={{
-              "& .MuiTabs-indicator": { backgroundColor: "#F5603A" },
-              "& .MuiTab-root": { color: "#6B6B80" },
-              "& .Mui-selected": { color: "#F5603A !important" },
+              "& .MuiTabs-indicator": { backgroundColor: "primary.light" },
+              "& .MuiTab-root": { color: "text.secondary" },
+              "& .Mui-selected": { color: "primary.light !important" },
             }}
           >
             {[
@@ -127,7 +127,7 @@ export default function ExplorePage() {
           <Chip
             label={`${sortedByVotes.length} goals found`}
             size="small"
-            sx={{ bgcolor: "#EEF4FF", color: "#3B72EE", fontWeight: 700 }}
+            sx={{ bgcolor: "rgba(59, 114, 238, 0.12)", color: "#3B72EE", fontWeight: 700 }}
           />
         </Box>
 

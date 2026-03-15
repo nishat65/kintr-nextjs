@@ -98,8 +98,8 @@ export const EditGoalDialog = ({ goal, open, onClose }: EditGoalDialogProps) => 
 
   const onSubmit = async (values: GoalFormValues) => {
     let target_date = values.target_date;
-    if (values.scope === 'month') target_date = `${target_date}-01`;
-    if (values.scope === 'year')  target_date = `${target_date}-01-01`;
+    if (values.scope === 'month') target_date = `${dayjs(target_date).format('YYYY-MM')}-01`;
+    if (values.scope === 'year')  target_date = `${dayjs(target_date).format('YYYY')}-01-01`;
     await updateGoal.mutateAsync({ id: goal.id, values: { ...values, target_date } });
     onClose();
   };

@@ -115,14 +115,14 @@ export default function DMThreadPage({
       </Box>
 
       {/* Messages */}
-      <Box sx={{ flex: 1, overflowY: "auto", p: 3, bgcolor: "#F7F7FB" }}>
+      <Box sx={{ flex: 1, overflowY: "auto", p: 3, bgcolor: "background.default" }}>
         <Container maxWidth="md">
           {messagesLoading ? (
             <Box sx={{ display: "flex", justifyContent: "center", pt: 5 }}>
               <CircularProgress size={28} />
             </Box>
           ) : messages.length === 0 ? (
-            <Box sx={{ textAlign: "center", py: 8, color: "#9B9BAB" }}>
+            <Box sx={{ textAlign: "center", py: 8, color: "text.disabled" }}>
               <Typography variant="body2">
                 No messages yet. Say hello!
               </Typography>
@@ -141,7 +141,7 @@ export default function DMThreadPage({
       </Box>
 
       {/* Input */}
-      <Box sx={{ bgcolor: "#fff", borderTop: "1px solid #F0F0F8", p: 2 }}>
+      <Box sx={{ bgcolor: "background.paper", borderTop: "1px solid", borderColor: "divider", p: 2 }}>
         <Container maxWidth="md">
           <Box sx={{ display: "flex", gap: 1.5, alignItems: "center" }}>
             <Avatar
@@ -169,7 +169,7 @@ export default function DMThreadPage({
                 bgcolor: "#F5603A",
                 color: "#fff",
                 "&:hover": { bgcolor: "#C94020" },
-                "&:disabled": { bgcolor: "#F0F0F8", color: "#C0C0D0" },
+                "&:disabled": { bgcolor: "action.disabledBackground", color: "text.disabled" },
               }}
             >
               <Send size={18} />

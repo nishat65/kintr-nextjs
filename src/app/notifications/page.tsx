@@ -49,7 +49,7 @@ export default function NotificationsPage() {
   const displayed = tab === 0 ? sorted : starred;
 
   return (
-    <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "#F7F7FB" }}>
+    <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "background.default" }}>
       <Box sx={{ backgroundColor: colors.darkBg, py: 6 }}>
         <Container maxWidth="md">
           <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
@@ -103,9 +103,9 @@ export default function NotificationsPage() {
           onChange={(_, v) => setTab(v)}
           sx={{
             mb: 3,
-            "& .MuiTabs-indicator": { backgroundColor: "#F5603A" },
-            "& .MuiTab-root": { color: "#6B6B80" },
-            "& .Mui-selected": { color: "#F5603A !important" },
+            "& .MuiTabs-indicator": { backgroundColor: "primary.light" },
+            "& .MuiTab-root": { color: "text.secondary" },
+            "& .Mui-selected": { color: "primary.light !important" },
           }}
         >
           <Tab
@@ -115,7 +115,7 @@ export default function NotificationsPage() {
                 <Chip
                   label={sorted.length}
                   size="small"
-                  sx={{ bgcolor: "#F7F7FB", color: "#6B6B80", fontWeight: 700, fontSize: "11px" }}
+                  sx={{ bgcolor: "action.hover", color: "text.secondary", fontWeight: 700, fontSize: "11px" }}
                 />
               </Box>
             }
@@ -129,7 +129,7 @@ export default function NotificationsPage() {
                   <Chip
                     label={starred.length}
                     size="small"
-                    sx={{ bgcolor: "#FFFBEC", color: "#F5C332", fontWeight: 700, fontSize: "11px" }}
+                    sx={{ bgcolor: "rgba(245, 195, 50, 0.12)", color: "#F5C332", fontWeight: 700, fontSize: "11px" }}
                   />
                 )}
               </Box>

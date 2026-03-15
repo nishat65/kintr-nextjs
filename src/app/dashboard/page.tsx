@@ -33,9 +33,9 @@ import { Goal } from "@/types";
 type ViewMode = "list" | "calendar";
 
 const statCards = [
-  { label: "Active Goals",  icon: <Flame size={18} />,      color: "#F5603A", bg: "#FFF0EC" },
-  { label: "In Progress",   icon: <TrendingUp size={18} />, color: "#3B72EE", bg: "#EEF4FF" },
-  { label: "Completed",     icon: <Trophy size={18} />,     color: "#4CAF50", bg: "#F0FBF0" },
+  { label: "Active Goals",  icon: <Flame size={18} />,      color: "#F5603A", bg: "rgba(245, 96, 58, 0.15)" },
+  { label: "In Progress",   icon: <TrendingUp size={18} />, color: "#3B72EE", bg: "rgba(59, 114, 238, 0.15)" },
+  { label: "Completed",     icon: <Trophy size={18} />,     color: "#4CAF50", bg: "rgba(76, 175, 80, 0.15)" },
 ];
 
 export default function DashboardPage() {
@@ -157,7 +157,7 @@ export default function DashboardPage() {
             <Chip
               label={`${filteredGoals.length} goal${filteredGoals.length !== 1 ? "s" : ""}`}
               size="small"
-              sx={{ bgcolor: "#EEF4FF", color: "#3B72EE", fontWeight: 700 }}
+              sx={{ bgcolor: "rgba(59, 114, 238, 0.12)", color: "#3B72EE", fontWeight: 700 }}
             />
           </Box>
 

@@ -107,7 +107,7 @@ function LoginContent() {
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
   const supabase = createClient();
-  const { isAuthenticated, isLoading } = useAuthStore();
+  const { isAuthenticated, isLoading, refreshUser } = useAuthStore();
 
   // Redirect to dashboard if already authenticated
   useEffect(() => {
@@ -133,9 +133,9 @@ function LoginContent() {
       setError(authError.message);
       return;
     }
-    // Refresh server state so middleware sees the new session, then navigate
-    router.refresh();
-    router.push('/dashboard');
+    // Update auth store before navigating so AppShell sees the authenticated state
+    await refreshUser();
+    router.replace('/dashboard');
   };
 
   const handleRegister = async (data: RegisterValues) => {
@@ -154,8 +154,8 @@ function LoginContent() {
       setError(authError.message);
       return;
     }
-    router.refresh();
-    router.push('/dashboard');
+    await refreshUser();
+    router.replace('/dashboard');
   };
 
   const handleGoogleAuth = async () => {
@@ -227,7 +227,7 @@ function LoginContent() {
               <Box
                 sx={{
                   display: "flex",
-                  bgcolor: "#F7F7FB",
+                  bgcolor: "action.hover",
                   borderRadius: "50px",
                   p: 0.5,
                   mb: 4,
@@ -269,7 +269,7 @@ function LoginContent() {
               </Typography>
               <Typography
                 variant="body2"
-                sx={{ color: "#6B6B80", textAlign: "center", mb: 4 }}
+                sx={{ color: "text.secondary", textAlign: "center", mb: 4 }}
               >
                 {mode === "login"
                   ? "Log in to track your goals and connect with friends."
@@ -292,10 +292,10 @@ function LoginContent() {
                 onClick={handleGoogleAuth}
                 sx={{
                   mb: 3,
-                  borderColor: "#E8E8F0",
-                  color: "#2D2D3A",
+                  borderColor: "divider",
+                  color: "text.primary",
                   fontWeight: 600,
-                  "&:hover": { borderColor: "#c8c8d8", bgcolor: "#F7F7FB" },
+                  "&:hover": { borderColor: "divider", bgcolor: "action.hover" },
                   display: "flex",
                   gap: 1.5,
                 }}
@@ -310,7 +310,7 @@ function LoginContent() {
                 <Chip
                   label="or"
                   size="small"
-                  sx={{ color: "#6B6B80", bgcolor: "#F7F7FB", fontWeight: 600 }}
+                  sx={{ color: "text.secondary", bgcolor: "action.hover", fontWeight: 600 }}
                 />
               </Divider>
 
@@ -374,7 +374,7 @@ function LoginContent() {
                     slotProps={{
                       input: {
                         startAdornment: (
-                          <Typography sx={{ color: "#6B6B80", mr: 0.5 }}>
+                          <Typography sx={{ color: "text.secondary", mr: 0.5 }}>
                             @
                           </Typography>
                         ),
@@ -422,7 +422,7 @@ function LoginContent() {
               <Typography
                 variant="body2"
                 textAlign="center"
-                sx={{ color: "#6B6B80", mt: 3 }}
+                sx={{ color: "text.secondary", mt: 3 }}
               >
                 {mode === "login"
                   ? "Don't have an account? "

@@ -31,17 +31,18 @@ export const GoalList = ({ goals, showAuthor = false, emptyMessage = 'No goals y
           textAlign: 'center',
           py: 10,
           px: 4,
-          border: '2px dashed #E8E8F0',
+          border: '2px dashed',
+          borderColor: 'divider',
           borderRadius: '20px',
         }}
       >
-        <Box sx={{ color: '#E8E8F0', mb: 2 }}>
+        <Box sx={{ color: 'divider', mb: 2 }}>
           <Target size={48} />
         </Box>
-        <Typography variant="h6" sx={{ color: '#6B6B80', mb: 1 }}>
+        <Typography variant="h6" sx={{ color: 'text.secondary', mb: 1 }}>
           {emptyMessage}
         </Typography>
-        <Typography variant="body2" sx={{ color: '#9B9BAB' }}>
+        <Typography variant="body2" sx={{ color: 'text.disabled' }}>
           Set a goal and start tracking your progress
         </Typography>
       </Box>

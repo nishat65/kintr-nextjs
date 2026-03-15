@@ -16,7 +16,7 @@ export default function ChatPage() {
 
   if (!isAuthenticated) {
     return (
-      <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "#F7F7FB" }}>
+      <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "background.default" }}>
         <Box sx={{ backgroundColor: colors.darkBg, py: 6 }}>
           <Container maxWidth="md">
             <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 2 }}>
@@ -31,12 +31,12 @@ export default function ChatPage() {
           </Container>
         </Box>
         <Container maxWidth="md" sx={{ py: 10 }}>
-          <Box sx={{ textAlign: "center", py: 8, border: "2px dashed #E8E8F0", borderRadius: "20px" }}>
-            <Lock size={40} color="#E8E8F0" />
-            <Typography variant="h6" sx={{ color: "#2D2D3A", mt: 2, fontWeight: 700 }}>
+          <Box sx={{ textAlign: "center", py: 8, border: "2px dashed", borderColor: "divider", borderRadius: "20px" }}>
+            <Lock size={40} color="currentColor" />
+            <Typography variant="h6" sx={{ color: "text.primary", mt: 2, fontWeight: 700 }}>
               Sign in to access messages
             </Typography>
-            <Typography variant="body2" sx={{ color: "#6B6B80", mt: 1, mb: 4 }}>
+            <Typography variant="body2" sx={{ color: "text.secondary", mt: 1, mb: 4 }}>
               Chat privately with your connections to stay motivated together.
             </Typography>
             <Box sx={{ display: "flex", gap: 2, justifyContent: "center", flexWrap: "wrap" }}>
@@ -52,7 +52,7 @@ export default function ChatPage() {
                 component={Link}
                 href="/login?mode=register"
                 variant="outlined"
-                sx={{ borderColor: "#F5603A", color: "#F5603A", "&:hover": { bgcolor: "#FFF0EC" }, borderRadius: "50px", px: 4 }}
+                sx={{ borderColor: "#F5603A", color: "#F5603A", "&:hover": { bgcolor: "rgba(245, 96, 58, 0.12)" }, borderRadius: "50px", px: 4 }}
               >
                 Create account
               </Button>
@@ -64,7 +64,7 @@ export default function ChatPage() {
   }
 
   return (
-    <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "#F7F7FB" }}>
+    <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "background.default" }}>
       <Box sx={{ backgroundColor: colors.darkBg, py: 6 }}>
         <Container maxWidth="md">
           <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 2 }}>
@@ -90,15 +90,15 @@ export default function ChatPage() {
               sx={{
                 textAlign: "center",
                 py: 12,
-                border: "2px dashed #E8E8F0",
+                border: "2px dashed", borderColor: "divider",
                 borderRadius: "20px",
               }}
             >
-              <MessageCircle size={40} color="#E8E8F0" />
-              <Typography variant="h6" sx={{ color: "#6B6B80", mt: 2 }}>
+              <MessageCircle size={40} color="currentColor" />
+              <Typography variant="h6" sx={{ color: "text.secondary", mt: 2 }}>
                 No messages yet
               </Typography>
-              <Typography variant="body2" sx={{ color: "#9B9BAB" }}>
+              <Typography variant="body2" sx={{ color: "text.disabled" }}>
                 Connect with someone to start a conversation
               </Typography>
             </Box>

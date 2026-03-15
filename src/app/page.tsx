@@ -87,28 +87,28 @@ const categories = [
     label: "Day Goals",
     icon: <Zap size={24} />,
     color: "#F5603A",
-    bg: "#FFF0EC",
+    bg: "rgba(245, 96, 58, 0.12)",
     description: "Daily habits & quick wins",
   },
   {
     label: "Month Goals",
     icon: <TrendingUp size={24} />,
     color: "#3B72EE",
-    bg: "#EEF4FF",
+    bg: "rgba(59, 114, 238, 0.12)",
     description: "Month-long challenges",
   },
   {
     label: "Year Goals",
     icon: <Target size={24} />,
     color: "#F5C332",
-    bg: "#FFFBEC",
+    bg: "rgba(245, 195, 50, 0.12)",
     description: "Life-changing ambitions",
   },
   {
     label: "Public Goals",
     icon: <Globe size={24} />,
     color: "#4CAF50",
-    bg: "#F0FBF0",
+    bg: "rgba(76, 175, 80, 0.12)",
     description: "Explore what others chase",
   },
 ];
@@ -125,7 +125,7 @@ export default function HomePage() {
   return (
     <Box sx={{ pt: "8px" }}>
       {/* ── Hero ── */}
-      <Box sx={{ backgroundColor: "#fff", overflow: "hidden" }}>
+      <Box sx={{ bgcolor: "background.paper", overflow: "hidden" }}>
         <Container maxWidth="lg" sx={{ py: { xs: 8, md: 14 } }}>
           <Grid container spacing={4} alignItems="center">
             <Grid size={{ xs: 12, md: 6 }}>
@@ -134,7 +134,7 @@ export default function HomePage() {
                   label="✨ Your goals, your journey"
                   sx={{
                     mb: 3,
-                    bgcolor: "#FFF0EC",
+                    bgcolor: "rgba(245, 96, 58, 0.12)",
                     color: "#B03818",
                     fontWeight: 700,
                     fontSize: "13px",
@@ -143,7 +143,7 @@ export default function HomePage() {
                 <Typography
                   variant="h1"
                   sx={{
-                    color: "#2D2D3A",
+                    color: "text.primary",
                     mb: 3,
                     fontSize: { xs: "40px", md: "56px" },
                   }}
@@ -157,7 +157,7 @@ export default function HomePage() {
                 <Typography
                   variant="body1"
                   sx={{
-                    color: "#6B6B80",
+                    color: "text.secondary",
                     mb: 5,
                     fontSize: "18px",
                     maxWidth: 480,
@@ -181,11 +181,11 @@ export default function HomePage() {
                       variant="outlined"
                       size="large"
                       sx={{
-                        borderColor: "#2B5EC4",
-                        color: "#2B5EC4",
+                        borderColor: "primary.main",
+                        color: "primary.main",
                         "&:hover": {
-                          borderColor: "#1A4599",
-                          bgcolor: "#EEF4FF",
+                          borderColor: "primary.dark",
+                          bgcolor: "rgba(59, 114, 238, 0.08)",
                         },
                       }}
                     >
@@ -209,7 +209,7 @@ export default function HomePage() {
                         display: "flex",
                         alignItems: "center",
                         gap: 0.75,
-                        color: "#6B6B80",
+                        color: "text.secondary",
                       }}
                     >
                       <Box sx={{ color: "#4CAF50" }}>{item.icon}</Box>
@@ -329,7 +329,8 @@ export default function HomePage() {
                       right: "0%",
                       width: "65%",
                       p: 0.5,
-                      border: "2px solid #F0F0F8",
+                      border: "2px solid",
+                      borderColor: "divider",
                       zIndex: 3,
                     }}
                   >
@@ -345,7 +346,7 @@ export default function HomePage() {
                           label="DAY GOAL"
                           size="small"
                           sx={{
-                            bgcolor: "#FFF0EC",
+                            bgcolor: "rgba(245, 96, 58, 0.12)",
                             color: "#B03818",
                             fontSize: "10px",
                             fontWeight: 700,
@@ -355,7 +356,7 @@ export default function HomePage() {
                           label="Completed"
                           size="small"
                           sx={{
-                            bgcolor: "#F0FBF0",
+                            bgcolor: "rgba(76, 175, 80, 0.12)",
                             color: "#2E7D32",
                             fontSize: "10px",
                           }}
@@ -364,13 +365,13 @@ export default function HomePage() {
                       <Typography
                         variant="h6"
                         component="p"
-                        sx={{ color: "#2D2D3A", fontSize: "15px", mb: 0.5 }}
+                        sx={{ color: "text.primary", fontSize: "15px", mb: 0.5 }}
                       >
                         Morning workout ✅
                       </Typography>
                       <Typography
                         variant="body2"
-                        sx={{ color: "#6B6B80", fontSize: "12px" }}
+                        sx={{ color: "text.secondary", fontSize: "12px" }}
                       >
                         30-min HIIT before 7am
                       </Typography>
@@ -397,7 +398,8 @@ export default function HomePage() {
                         sx={{
                           width: 40,
                           height: 40,
-                          border: "2px solid #fff",
+                          border: "2px solid",
+                          borderColor: "background.paper",
                           boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
                         }}
                       />
@@ -439,8 +441,9 @@ export default function HomePage() {
       {/* ── Features ── */}
       <Box
         sx={{
-          backgroundColor: "#fff",
-          borderTop: "1px solid #F0F0F8",
+          bgcolor: "background.paper",
+          borderTop: "1px solid",
+          borderTopColor: "divider",
           py: { xs: 8, md: 12 },
         }}
       >
@@ -461,7 +464,7 @@ export default function HomePage() {
             <Typography
               variant="body1"
               textAlign="center"
-              sx={{ color: "#6B6B80", mb: 8, maxWidth: 540, mx: "auto" }}
+              sx={{ color: "text.secondary", mb: 8, maxWidth: 540, mx: "auto" }}
             >
               Kintr combines personal goal tracking with a social accountability
               layer — so you never go it alone.
@@ -486,7 +489,7 @@ export default function HomePage() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        bgcolor: "#F7F7FB",
+                        bgcolor: "action.hover",
                         mx: "auto",
                         mb: 3,
                       }}
@@ -498,7 +501,7 @@ export default function HomePage() {
                     </Typography>
                     <Typography
                       variant="body1"
-                      sx={{ color: "#6B6B80", lineHeight: 1.7 }}
+                      sx={{ color: "text.secondary", lineHeight: 1.7 }}
                     >
                       {feature.description}
                     </Typography>
@@ -511,7 +514,7 @@ export default function HomePage() {
       </Box>
 
       {/* ── Testimonials ── */}
-      <Box sx={{ backgroundColor: "#fff", py: { xs: 8, md: 12 } }}>
+      <Box sx={{ bgcolor: "background.paper", py: { xs: 8, md: 12 } }}>
         <Container maxWidth="lg">
           <motion.div
             initial="hidden"
@@ -552,7 +555,7 @@ export default function HomePage() {
                       <Typography
                         variant="body1"
                         sx={{
-                          color: "#2D2D3A",
+                          color: "text.primary",
                           mb: 3,
                           lineHeight: 1.7,
                           fontStyle: "italic",
@@ -568,13 +571,13 @@ export default function HomePage() {
                           <Typography
                             variant="body2"
                             fontWeight={700}
-                            sx={{ color: "#2D2D3A" }}
+                            sx={{ color: "text.primary" }}
                           >
                             {t.name}
                           </Typography>
                           <Typography
                             variant="caption"
-                            sx={{ color: "#6B6B80" }}
+                            sx={{ color: "text.secondary" }}
                           >
                             {t.handle}
                           </Typography>
@@ -592,7 +595,7 @@ export default function HomePage() {
       {/* ── CTA Section (Cream BG) ── */}
       <Box
         sx={{
-          backgroundColor: colors.cream,
+          bgcolor: "background.default",
           py: { xs: 8, md: 14 },
           overflow: "hidden",
           position: "relative",
@@ -615,7 +618,7 @@ export default function HomePage() {
                 </Typography>
                 <Typography
                   variant="body1"
-                  sx={{ color: "#6B6B80", mb: 5, lineHeight: 1.7 }}
+                  sx={{ color: "text.secondary", mb: 5, lineHeight: 1.7 }}
                 >
                   Join thousands of people already using Kintr to stay focused
                   and accountable — one goal at a time.
@@ -636,7 +639,7 @@ export default function HomePage() {
                 <Box>
                   <Typography
                     variant="body2"
-                    sx={{ color: "#6B6B80", mb: 2, fontWeight: 600 }}
+                    sx={{ color: "text.secondary", mb: 2, fontWeight: 600 }}
                   >
                     Goal scopes
                   </Typography>
@@ -654,10 +657,11 @@ export default function HomePage() {
                         label={tag}
                         size="small"
                         sx={{
-                          bgcolor: "#fff",
-                          color: "#2D2D3A",
+                          bgcolor: "background.paper",
+                          color: "text.primary",
                           fontWeight: 600,
-                          border: "1px solid #E8E8F0",
+                          border: "1px solid",
+                          borderColor: "divider",
                         }}
                       />
                     ))}
@@ -753,7 +757,7 @@ export default function HomePage() {
       </Box>
 
       {/* ── Wave Divider ── */}
-      <Box sx={{ lineHeight: 0, overflow: "hidden", bgcolor: "#fff" }}>
+      <Box sx={{ lineHeight: 0, overflow: "hidden", bgcolor: "background.paper" }}>
         <svg
           viewBox="0 0 1440 160"
           xmlns="http://www.w3.org/2000/svg"
@@ -777,7 +781,7 @@ export default function HomePage() {
       </Box>
 
       {/* ── Categories Grid ── */}
-      <Box sx={{ backgroundColor: colors.cream, py: { xs: 8, md: 12 } }}>
+      <Box sx={{ bgcolor: "background.default", py: { xs: 8, md: 12 } }}>
         <Container maxWidth="lg">
           <motion.div
             initial="hidden"
@@ -795,7 +799,7 @@ export default function HomePage() {
             <Typography
               variant="body1"
               textAlign="center"
-              sx={{ color: "#6B6B80", mb: 8, maxWidth: 500, mx: "auto" }}
+              sx={{ color: "text.secondary", mb: 8, maxWidth: 500, mx: "auto" }}
             >
               Whether you&apos;re building a habit today or chasing a dream this
               year, Kintr has you covered.
@@ -846,7 +850,7 @@ export default function HomePage() {
                       >
                         {cat.label}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: "#6B6B80" }}>
+                      <Typography variant="body2" sx={{ color: "text.secondary" }}>
                         {cat.description}
                       </Typography>
                     </CardContent>

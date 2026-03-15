@@ -53,8 +53,9 @@ export const useUpdateGoalStatus = () => {
   return useMutation({
     mutationFn: ({ id, status }: { id: string; status: GoalStatus }) =>
       updateGoalStatus(id, status),
-    onSuccess: () => {
+    onSuccess: (_, { id }) => {
       qc.invalidateQueries({ queryKey: ['goals'] });
+      qc.invalidateQueries({ queryKey: ['goal', id] });
     },
   });
 };

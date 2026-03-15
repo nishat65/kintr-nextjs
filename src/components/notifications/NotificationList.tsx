@@ -12,22 +12,22 @@ import { Notification, NotificationType } from '@/types';
 dayjs.extend(relativeTime);
 
 const notifConfig: Record<NotificationType, { icon: React.ReactElement; color: string; bg: string; text: string }> = {
-  upvote: { icon: <ThumbsUp size={14} />, color: '#4CAF50', bg: '#F0FBF0', text: 'upvoted your goal' },
-  downvote: { icon: <ThumbsDown size={14} />, color: '#EF5350', bg: '#FFF0F0', text: 'downvoted your goal' },
-  comment: { icon: <MessageCircle size={14} />, color: '#3B72EE', bg: '#EEF4FF', text: 'commented on your goal' },
-  message: { icon: <MessageSquare size={14} />, color: '#F5603A', bg: '#FFF0EC', text: 'sent you a message' },
-  goal_message: { icon: <MessageCircle size={14} />, color: '#F5C332', bg: '#FFFBEC', text: 'sent a goal message' },
-  connection_request: { icon: <UserPlus size={14} />, color: '#3B72EE', bg: '#EEF4FF', text: 'sent you a connection request' },
-  connection_accepted: { icon: <UserCheck size={14} />, color: '#4CAF50', bg: '#F0FBF0', text: 'accepted your connection request' },
-  goal_shared: { icon: <Share2 size={14} />, color: '#F5603A', bg: '#FFF0EC', text: 'shared a goal with you' },
-  workspace_invite: { icon: <Briefcase size={14} />, color: '#3B72EE', bg: '#EEF4FF', text: 'invited you to a workspace' },
-  goal_assigned: { icon: <Target size={14} />, color: '#F5603A', bg: '#FFF0EC', text: 'assigned a goal to you' },
-  goal_status_changed: { icon: <Bell size={14} />, color: '#F5C332', bg: '#FFFBEC', text: 'updated a goal status' },
-  mention: { icon: <AtSign size={14} />, color: '#9C27B0', bg: '#F3E5F5', text: 'mentioned you' },
-  collaborator_added: { icon: <UserPlus size={14} />, color: '#3B72EE', bg: '#EEF4FF', text: 'added you to a workspace' },
-  goal_deleted: { icon: <Bell size={14} />, color: '#EF5350', bg: '#FFF0F0', text: 'deleted a goal in your workspace' },
-  goal_moved: { icon: <Briefcase size={14} />, color: '#F5C332', bg: '#FFFBEC', text: 'moved a goal to a different column' },
-  collaborator_has_goal: { icon: <Target size={14} />, color: '#F5603A', bg: '#FFF0EC', text: 'already has a goal in this workspace' },
+  upvote: { icon: <ThumbsUp size={14} />, color: '#4CAF50', bg: 'rgba(76, 175, 80, 0.12)', text: 'upvoted your goal' },
+  downvote: { icon: <ThumbsDown size={14} />, color: '#EF5350', bg: 'rgba(239, 83, 80, 0.12)', text: 'downvoted your goal' },
+  comment: { icon: <MessageCircle size={14} />, color: '#3B72EE', bg: 'rgba(59, 114, 238, 0.12)', text: 'commented on your goal' },
+  message: { icon: <MessageSquare size={14} />, color: '#F5603A', bg: 'rgba(245, 96, 58, 0.12)', text: 'sent you a message' },
+  goal_message: { icon: <MessageCircle size={14} />, color: '#F5C332', bg: 'rgba(245, 195, 50, 0.12)', text: 'sent a goal message' },
+  connection_request: { icon: <UserPlus size={14} />, color: '#3B72EE', bg: 'rgba(59, 114, 238, 0.12)', text: 'sent you a connection request' },
+  connection_accepted: { icon: <UserCheck size={14} />, color: '#4CAF50', bg: 'rgba(76, 175, 80, 0.12)', text: 'accepted your connection request' },
+  goal_shared: { icon: <Share2 size={14} />, color: '#F5603A', bg: 'rgba(245, 96, 58, 0.12)', text: 'shared a goal with you' },
+  workspace_invite: { icon: <Briefcase size={14} />, color: '#3B72EE', bg: 'rgba(59, 114, 238, 0.12)', text: 'invited you to a workspace' },
+  goal_assigned: { icon: <Target size={14} />, color: '#F5603A', bg: 'rgba(245, 96, 58, 0.12)', text: 'assigned a goal to you' },
+  goal_status_changed: { icon: <Bell size={14} />, color: '#F5C332', bg: 'rgba(245, 195, 50, 0.12)', text: 'updated a goal status' },
+  mention: { icon: <AtSign size={14} />, color: '#9C27B0', bg: 'rgba(156, 39, 176, 0.12)', text: 'mentioned you' },
+  collaborator_added: { icon: <UserPlus size={14} />, color: '#3B72EE', bg: 'rgba(59, 114, 238, 0.12)', text: 'added you to a workspace' },
+  goal_deleted: { icon: <Bell size={14} />, color: '#EF5350', bg: 'rgba(239, 83, 80, 0.12)', text: 'deleted a goal in your workspace' },
+  goal_moved: { icon: <Briefcase size={14} />, color: '#F5C332', bg: 'rgba(245, 195, 50, 0.12)', text: 'moved a goal to a different column' },
+  collaborator_has_goal: { icon: <Target size={14} />, color: '#F5603A', bg: 'rgba(245, 96, 58, 0.12)', text: 'already has a goal in this workspace' },
 };
 
 interface NotificationListProps {
@@ -45,9 +45,9 @@ export const NotificationList = ({
 }: NotificationListProps) => {
   if (notifications.length === 0) {
     return (
-      <Box sx={{ textAlign: 'center', py: 10, border: '2px dashed #E8E8F0', borderRadius: '20px' }}>
-        <Typography variant="h6" sx={{ color: '#6B6B80' }}>All caught up!</Typography>
-        <Typography variant="body2" sx={{ color: '#9B9BAB' }}>No new notifications</Typography>
+      <Box sx={{ textAlign: 'center', py: 10, border: '2px dashed', borderColor: 'divider', borderRadius: '20px' }}>
+        <Typography variant="h6" sx={{ color: 'text.secondary' }}>All caught up!</Typography>
+        <Typography variant="body2" sx={{ color: 'text.disabled' }}>No new notifications</Typography>
       </Box>
     );
   }
@@ -66,11 +66,12 @@ export const NotificationList = ({
               alignItems: 'flex-start',
               gap: 2,
               p: 2.5,
-              bgcolor: notif.starred ? '#FFFBF0' : isUnread ? '#FAFEFF' : '#fff',
-              borderBottom: i < notifications.length - 1 ? '1px solid #F0F0F8' : 'none',
+              bgcolor: notif.starred ? 'rgba(245, 195, 50, 0.06)' : isUnread ? 'rgba(59, 114, 238, 0.04)' : 'background.paper',
+              borderBottom: i < notifications.length - 1 ? '1px solid' : 'none',
+              borderBottomColor: 'divider',
               borderLeft: isUnread ? '3px solid #F5603A' : notif.starred ? '3px solid #F5C332' : '3px solid transparent',
               transition: 'all 0.15s',
-              '&:hover': { bgcolor: '#F7F7FB' },
+              '&:hover': { bgcolor: 'action.hover' },
               '&:hover .notif-actions': { opacity: 1 },
             }}
           >
@@ -87,7 +88,8 @@ export const NotificationList = ({
                   borderRadius: '50%',
                   bgcolor: config.bg,
                   color: config.color,
-                  border: '2px solid #fff',
+                  border: '2px solid',
+                  borderColor: 'background.paper',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -99,11 +101,11 @@ export const NotificationList = ({
 
             {/* Content */}
             <Box sx={{ flex: 1, minWidth: 0 }}>
-              <Typography variant="body2" sx={{ color: '#2D2D3A', lineHeight: 1.5 }}>
+              <Typography variant="body2" sx={{ color: 'text.primary', lineHeight: 1.5 }}>
                 <Box component="span" fontWeight={700}>{notif.actor.display_name}</Box>
                 {' '}{config.text}
               </Typography>
-              <Typography variant="caption" sx={{ color: '#9B9BAB', display: 'block', mt: 0.5 }}>
+              <Typography variant="caption" sx={{ color: 'text.disabled', display: 'block', mt: 0.5 }}>
                 {dayjs(notif.created_at).fromNow()}
               </Typography>
             </Box>
@@ -125,7 +127,7 @@ export const NotificationList = ({
                   <IconButton
                     size="small"
                     onClick={() => onMarkRead(notif.id)}
-                    sx={{ color: '#4CAF50', '&:hover': { bgcolor: '#F0FBF0' } }}
+                    sx={{ color: '#4CAF50', '&:hover': { bgcolor: 'rgba(76, 175, 80, 0.12)' } }}
                   >
                     <Check size={15} />
                   </IconButton>
@@ -137,8 +139,8 @@ export const NotificationList = ({
                     size="small"
                     onClick={() => onStar(notif.id, !notif.starred)}
                     sx={{
-                      color: notif.starred ? '#F5C332' : '#9B9BAB',
-                      '&:hover': { bgcolor: '#FFFBEC', color: '#F5C332' },
+                      color: notif.starred ? '#F5C332' : 'text.disabled',
+                      '&:hover': { bgcolor: 'rgba(245, 195, 50, 0.12)', color: '#F5C332' },
                     }}
                   >
                     <Star size={15} fill={notif.starred ? '#F5C332' : 'none'} />
@@ -150,7 +152,7 @@ export const NotificationList = ({
                   <IconButton
                     size="small"
                     onClick={() => onDelete(notif.id)}
-                    sx={{ color: '#9B9BAB', '&:hover': { bgcolor: '#FFF0F0', color: '#EF5350' } }}
+                    sx={{ color: 'text.disabled', '&:hover': { bgcolor: 'rgba(239, 83, 80, 0.12)', color: '#EF5350' } }}
                   >
                     <Trash2 size={15} />
                   </IconButton>

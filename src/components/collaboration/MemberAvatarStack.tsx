@@ -17,7 +17,7 @@ export const MemberAvatarStack = ({ members, max = 4 }: { members: Profile[]; ma
               width: 28,
               height: 28,
               fontSize: '11px',
-              border: '2px solid white',
+              border: '2px solid', borderColor: 'background.paper',
               ml: i === 0 ? 0 : -1,
               zIndex: visible.length - i,
             }}
@@ -27,7 +27,7 @@ export const MemberAvatarStack = ({ members, max = 4 }: { members: Profile[]; ma
         </Tooltip>
       ))}
       {overflow > 0 && (
-        <Avatar sx={{ width: 28, height: 28, fontSize: '11px', bgcolor: '#E8E8F0', color: '#6B6B80', border: '2px solid white', ml: -1 }}>
+        <Avatar sx={{ width: 28, height: 28, fontSize: '11px', bgcolor: 'action.hover', color: 'text.secondary', border: '2px solid', borderColor: 'background.paper', ml: -1 }}>
           +{overflow}
         </Avatar>
       )}

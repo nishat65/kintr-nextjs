@@ -44,7 +44,7 @@ const schema = z.object({
 });
 
 const PRIORITY_OPTIONS = [
-  { value: "none",   label: "None",   color: "#6B6B80" },
+  { value: "none",   label: "None",   color: "text.secondary" },
   { value: "low",    label: "Low",    color: "#4CAF50" },
   { value: "medium", label: "Medium", color: "#F5C332" },
   { value: "high",   label: "High",   color: "#F5603A" },
@@ -93,8 +93,8 @@ export default function NewGoalPage() {
   const onSubmit = async (values: GoalFormValues) => {
     if (!user) return;
     let target_date = values.target_date;
-    if (values.scope === "month") target_date = `${target_date}-01`;
-    if (values.scope === "year")  target_date = `${target_date}-01-01`;
+    if (values.scope === "month") target_date = `${dayjs(target_date).format("YYYY-MM")}-01`;
+    if (values.scope === "year")  target_date = `${dayjs(target_date).format("YYYY")}-01-01`;
     const newGoal = await createGoal.mutateAsync({
       values: { ...values, target_date },
       userId: user.id,
@@ -103,7 +103,7 @@ export default function NewGoalPage() {
   };
 
   return (
-    <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "#F7F7FB" }}>
+    <Box sx={{ pt: "8px", minHeight: "100vh", bgcolor: "background.default" }}>
       <Box sx={{ backgroundColor: colors.darkBg, py: 4 }}>
         <Container maxWidth="md">
           <Link href="/dashboard" style={{ textDecoration: "none" }}>
@@ -147,7 +147,7 @@ export default function NewGoalPage() {
                 {/* Description */}
                 <Typography variant="h6" sx={{ mb: 1.5, fontWeight: 700 }}>
                   Description{" "}
-                  <Box component="span" sx={{ fontWeight: 400, color: "#6B6B80", fontSize: "14px" }}>
+                  <Box component="span" sx={{ fontWeight: 400, color: "text.secondary", fontSize: "14px" }}>
                     (optional)
                   </Box>
                 </Typography>
@@ -285,14 +285,14 @@ export default function NewGoalPage() {
                     justifyContent: "space-between",
                     alignItems: "center",
                     p: 3,
-                    bgcolor: "#F7F7FB",
+                    bgcolor: "action.hover",
                     borderRadius: "12px",
                     mb: 5,
                   }}
                 >
                   <Box>
                     <Typography variant="body1" fontWeight={700}>Make this goal public</Typography>
-                    <Typography variant="body2" sx={{ color: "#6B6B80" }}>
+                    <Typography variant="body2" sx={{ color: "text.secondary" }}>
                       Public goals can be seen and cheered on by anyone
                     </Typography>
                   </Box>
@@ -355,7 +355,7 @@ export default function NewGoalPage() {
                 {/* Submit */}
                 <Box sx={{ display: "flex", gap: 2 }}>
                   <Link href="/dashboard" style={{ textDecoration: "none", flex: 1 }}>
-                    <Button variant="outlined" fullWidth sx={{ borderColor: "#E8E8F0", color: "#6B6B80" }}>
+                    <Button variant="outlined" fullWidth sx={{ borderColor: "divider", color: "text.secondary" }}>
                       Cancel
                     </Button>
                   </Link>

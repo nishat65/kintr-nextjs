@@ -21,10 +21,10 @@ const AuthInitializer = () => {
       // Skip events that don't change auth state
       if (event === 'TOKEN_REFRESHED' || event === 'INITIAL_SESSION') return;
 
-      // For SIGNED_IN / SIGNED_OUT, refresh user outside the callback
+      // For SIGNED_IN / SIGNED_OUT, defer refresh to the next tick
       // to avoid Supabase auth lock deadlock when querying inside onAuthStateChange
       if (event === 'SIGNED_IN') {
-        refreshUser();
+        setTimeout(() => refreshUser(), 0);
       } else if (event === 'SIGNED_OUT') {
         setUser(null);
       }

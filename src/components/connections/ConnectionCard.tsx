@@ -27,13 +27,13 @@ export const ConnectionCard = ({ connection, currentUserId, onAccept, onReject, 
           </Link>
           <Box sx={{ flex: 1 }}>
             <Link href={`/profile/${otherUser.username}`} style={{ textDecoration: 'none' }}>
-              <Typography variant="body1" fontWeight={700} sx={{ color: '#2D2D3A', '&:hover': { color: '#F5603A' } }}>
+              <Typography variant="body1" fontWeight={700} sx={{ color: 'text.primary', '&:hover': { color: '#F5603A' } }}>
                 {otherUser.display_name}
               </Typography>
             </Link>
-            <Typography variant="caption" sx={{ color: '#6B6B80' }}>@{otherUser.username}</Typography>
+            <Typography variant="caption" sx={{ color: 'text.secondary' }}>@{otherUser.username}</Typography>
             {otherUser.bio && (
-              <Typography variant="body2" sx={{ color: '#6B6B80', mt: 0.5, fontSize: '12px' }}>
+              <Typography variant="body2" sx={{ color: 'text.secondary', mt: 0.5, fontSize: '12px' }}>
                 {otherUser.bio}
               </Typography>
             )}
@@ -55,7 +55,7 @@ export const ConnectionCard = ({ connection, currentUserId, onAccept, onReject, 
                   size="small"
                   variant="outlined"
                   startIcon={<UserX size={14} />}
-                  sx={{ borderColor: '#E8E8F0', color: '#6B6B80' }}
+                  sx={{ borderColor: 'divider', color: 'text.secondary' }}
                   onClick={() => onReject?.(connection.id)}
                 >
                   Decline
@@ -68,7 +68,7 @@ export const ConnectionCard = ({ connection, currentUserId, onAccept, onReject, 
                     size="small"
                     variant="outlined"
                     startIcon={<MessageCircle size={14} />}
-                    sx={{ borderColor: '#E8E8F0', color: '#2D2D3A' }}
+                    sx={{ borderColor: 'divider', color: 'text.primary' }}
                   >
                     Message
                   </Button>

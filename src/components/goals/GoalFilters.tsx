@@ -22,9 +22,9 @@ export const GoalFilters = () => {
         value={activeScope}
         onChange={(_, v) => setActiveScope(v)}
         sx={{
-          '& .MuiTabs-indicator': { backgroundColor: '#F5603A', height: 3, borderRadius: '2px' },
-          '& .MuiTab-root': { color: '#6B6B80', minWidth: 'auto', px: 2 },
-          '& .Mui-selected': { color: '#F5603A !important' },
+          '& .MuiTabs-indicator': { backgroundColor: 'primary.light', height: 3, borderRadius: '2px' },
+          '& .MuiTab-root': { color: 'text.secondary', minWidth: 'auto', px: 2 },
+          '& .Mui-selected': { color: 'primary.light !important' },
         }}
       >
         {scopeTabs.map((tab) => (

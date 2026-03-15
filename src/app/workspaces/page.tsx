@@ -95,7 +95,7 @@ export default function WorkspacesPage() {
           </Grid>
         ) : (
           <Box sx={{ textAlign: 'center', py: 10 }}>
-            <Briefcase size={48} color="#6B6B80" />
+            <Briefcase size={48} />
             <Typography variant="h6" fontWeight={700} sx={{ mt: 2, mb: 1 }}>No workspaces yet</Typography>
             <Typography variant="body2" sx={{ color: 'text.secondary', mb: 3 }}>
               Create a workspace to collaborate on goals with others
