@@ -32,6 +32,13 @@ export const AppShell = ({ children }: { children: React.ReactNode }) => {
     }
   }, [isLoading, isAuthenticated, isProtected, router]);
 
+  // Redirect authenticated users away from login/register to dashboard
+  useEffect(() => {
+    if (!isLoading && isAuthenticated && (pathname === '/login' || pathname === '/register')) {
+      router.replace('/dashboard');
+    }
+  }, [isLoading, isAuthenticated, pathname, router]);
+
   // While session is resolving, show a spinner to prevent content flash.
   // Landing page (/) renders immediately; other routes wait for auth.
   if (isLoading && pathname !== '/') {

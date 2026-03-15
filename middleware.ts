@@ -2,11 +2,10 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { updateSession } from '@/lib/supabase/middleware';
 import { rateLimit } from '@/lib/utils/rateLimit';
 
-// Rate limit configs per route pattern
+// Rate limit configs — tuned for serverless (shared instance)
 const RATE_LIMITS = {
-  auth: { maxRequests: 10, windowMs: 15 * 60 * 1000 },     // 10 per 15 min
-  api: { maxRequests: 100, windowMs: 60 * 1000 },           // 100 per min
-  general: { maxRequests: 200, windowMs: 60 * 1000 },       // 200 per min
+  auth: { maxRequests: 20, windowMs: 5 * 60 * 1000 },       // 20 attempts per 5 min
+  general: { maxRequests: 500, windowMs: 60 * 1000 },        // 500 per min
 } as const;
 
 const getClientIp = (request: NextRequest): string => {
@@ -21,23 +20,23 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const ip = getClientIp(request);
 
-  // Apply stricter rate limiting to auth routes
-  if (pathname === '/login' || pathname === '/register') {
-    // Only rate limit POST-like requests (form submissions via navigation)
+  // Only rate-limit auth form submissions (POST), not page loads
+  if (
+    (pathname === '/login' || pathname === '/register') &&
+    request.method === 'POST'
+  ) {
     const result = rateLimit(`auth:${ip}`, RATE_LIMITS.auth);
     if (!result.allowed) {
-      return new NextResponse('Too many requests. Please try again later.', {
+      return new NextResponse('Too many login attempts. Please try again later.', {
         status: 429,
         headers: {
           'Retry-After': String(Math.ceil((result.resetAt - Date.now()) / 1000)),
-          'X-RateLimit-Limit': String(RATE_LIMITS.auth.maxRequests),
-          'X-RateLimit-Remaining': '0',
         },
       });
     }
   }
 
-  // General rate limiting for all other routes
+  // General rate limiting
   const generalResult = rateLimit(`general:${ip}`, RATE_LIMITS.general);
   if (!generalResult.allowed) {
     return new NextResponse('Too many requests. Please try again later.', {
